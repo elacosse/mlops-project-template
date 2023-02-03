@@ -2,7 +2,6 @@
 import textwrap
 from pathlib import Path
 from shutil import move, rmtree
-from typing import List
 
 # Project root directory
 PROJECT_DIRECTORY = Path.cwd().absolute()
