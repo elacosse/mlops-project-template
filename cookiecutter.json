@@ -1,0 +1,32 @@
+{
+  "project_name": "python-project",
+  "project_description": "`{{ cookiecutter.project_name.lower().replace(' ', '-') }}` is a Python cli/package",
+  "organization": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "license": [
+    "MIT",
+    "BSD-3",
+    "GNU GPL v3.0",
+    "Apache Software License 2.0"
+  ],
+  "_all_python_minor_version": [
+    8,
+    9,
+    10
+  ],
+  "minimal_python_version": [
+    3.8,
+    3.9,
+    3.10
+  ],
+  "github_name": "{{ cookiecutter.organization.lower().replace(' ', '_').replace('-', '_') }}",
+  "email": "eric@gradiente.space",
+  "version": "0.1.0",
+  "line_length": 120,
+  "create_example_template": [
+    "cli",
+    "none"
+  ],
+  "_copy_without_render": [
+    "poetry.lock"
+  ]
+}
