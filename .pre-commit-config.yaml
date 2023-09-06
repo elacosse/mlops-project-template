@@ -25,7 +25,7 @@ repos:
     hooks:
       - id: ruff
         name: ruff
-        entry: poetry run ruff --settings-path pyproject.toml
+        entry: poetry run ruff
         exclude: ^{{ cookiecutter.project_name }}/
         types: [python]
         language: system
