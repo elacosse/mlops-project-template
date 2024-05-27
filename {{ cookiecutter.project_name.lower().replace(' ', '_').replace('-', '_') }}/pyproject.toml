@@ -1,69 +1,25 @@
-{%- set license_classifiers = {
-    'MIT': 'License :: OSI Approved :: MIT License',
-    'BSD-3': 'License :: OSI Approved :: BSD License',
-    'GNU GPL v3.0': 'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
-    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-} -%}
-{%- set python_version_splitted = cookiecutter.minimal_python_version.split('.') | map('int') | list -%}
-# Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
-[build-system]
-requires = ["poetry_core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.project_name }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.project_description }}"
 readme = "README.md"
-authors = ["{{ cookiecutter.organization }} <{{ cookiecutter.email }}>"]
+authors = ["name = {{ cookiecutter.organization }} email = {{ cookiecutter.email }}"]
 license = "{{ cookiecutter.license }}"
 repository = "https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}"
 homepage = "https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.project_name }}"
 
-# Keywords description https://python-poetry.org/docs/pyproject/#keywords
-keywords = []  #! Update me
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
-# Pypi classifiers: https://pypi.org/classifiers/
-classifiers = [  #! Update me
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "Topic :: Software Development :: Libraries :: Python Modules",
-  "{{ license_classifiers[cookiecutter.license] }}",
-  "Programming Language :: Python :: 3",
-  {%- for minor_version in cookiecutter._all_python_minor_version if minor_version >= python_version_splitted[1] %}
-  "Programming Language :: Python :: 3.{{ minor_version }}",{% endfor %}
-]
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
 
-{% if cookiecutter.create_example_template == 'cli' -%}[tool.poetry.scripts]
-# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"{{ cookiecutter.project_name }}" = "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}.__main__:app"{%- endif %}
+[tool.pixi.pypi-dependencies]
+"{{ cookiecutter.project_name }}" = { path = ".", editable = true }
 
-[tool.poetry.dependencies]
-python = "^{{ cookiecutter.minimal_python_version }}"
-{% if cookiecutter.minimal_python_version == '3.7' -%}importlib_metadata = {version = "^4.5.0", python = "<3.8"}{%- endif -%}
-{%+ if cookiecutter.create_example_template == 'cli' %}
-typer = {extras = ["all"], version = "^0.4.0"}
-rich = "^10.14.0"
-{% endif %}
-
-[tool.poetry.dev-dependencies]
-bandit = "^1.7.1"
-darglint = "^1.8.1"
-mypy = "^0.910"
-mypy-extensions = "^0.4.3"
-pre-commit = "^2.15.0"
-pydocstyle = "^6.1.1"
-pylint = "^2.11.1"
-pytest = "^6.2.5"
-pyupgrade = "^2.29.1"
-ruff = "^0.0.238"
-safety = "^1.10.3"
-coverage = "^6.1.2"
-coverage-badge = "^1.1.0"
-pytest-html = "^3.1.1"
-pytest-cov = "^3.0.0"
-yamllint = "^1.29.0"
+[tool.pixi.tasks]
 
 [tool.ruff]
 # https://github.com/charliermarsh/ruff
