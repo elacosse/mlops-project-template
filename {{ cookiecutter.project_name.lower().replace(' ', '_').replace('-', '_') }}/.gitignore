@@ -615,3 +615,17 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/osx,python,pycharm,windows,visualstudio,visualstudiocode
+
+
+# Data files
+data/0-external/*
+data/1-interim/*
+data/2-input/*
+data/3-output/*
+data/4-evaluate/*
+
+!data/0-external/.gitkeep
+!data/1-interim/.gitkeep
+!data/2-input/.gitkeep
+!data/3-output/.gitkeep
+!data/4-evaluate/.gitkeep

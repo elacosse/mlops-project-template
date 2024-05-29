@@ -13,6 +13,34 @@
 
 </div>
 
+
+## Folder structure of the project
+Cookiecutter is used to create a standardized template for a folder structure for projects. Below is an example of such a template created using Cookiecutter:
+    
+    ├── AUTHORS.md
+    ├── LICENSE
+    ├── README.md
+    ├── bin                 <- Your compiled model code can be stored here (not tracked by git)
+    ├── config              <- Configuration files
+    ├── data                
+    │   ├── 0-external      <- Data external to the project.
+    │   ├── 1-interim       <- Intermediate data that has been altered.
+    │   ├── 2-input         <- The processed datasets, ready for modeling.
+    │   ├── 3-output        <- Data dump from the model.
+    │   └── 4-evaluate      <- Post-processed data, ready for visualisation.
+    ├── docs                <- Documentation, e.g., doxygen or scientific papers (not tracked by git)
+    ├── notebooks           <- Jupyter notebooks
+    ├── reports             <- For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports
+    │   └── figures         <- Figures for the manuscript or reports
+    └── src                 <- Source code for this project
+        ├── 0-setup         <- Install necessary software, dependencies, pull other git projects, etc.
+        ├── 1-preprocess    <- Scripts and programs to process data, from 1-external to 2-interim.
+        ├── 2-build         <- Scripts to create model specific inputm from 2-interim to 3-input. 
+        ├── 3-model         <- Scripts to run model and convert or compress model results, from 3-input to 4-output.
+        ├── 4-analyze       <- Scripts to post-process model results, from 4-output to 5-visualization.
+        └── 5-evaluate      <- Scripts for evaluation of your results, from 5-evaluate to ./report/figures.
+
+
 ## Very first steps
 
 ### Initialize your code
